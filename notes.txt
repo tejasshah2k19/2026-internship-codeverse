@@ -1,0 +1,16 @@
+How to create jsp ? 
+	right click on views folder ->  new -> other -> type -> jsp -> next -> give jsp name and finish 
+	
+	
+How To create  controller ? 
+	1) right click on controller folder -> new -> other -> type class -> next -> Give class name and finish 
+	2) use @Controller annotation above the class name 
+	
+	
+class =>
+			1) variables 
+			2) methods 
+
+How to run project / start server ?
+project -> right click -> run as -> spring boot application 
+
