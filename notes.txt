@@ -14,3 +14,33 @@ class =>
 How to run project / start server ?
 project -> right click -> run as -> spring boot application 
 
+
+
+How to create entity ? 
+	we have folder called entity inside grownited folder 
+		if not then we have to create folder entity 
+	now create class UserEntity inside entity folder 
+	use @Entity and @Table(name="users") at class level annotation 
+	add variable in your UserEntity like , userId, firstName etc. 
+	
+	
+How to generate getters and setters? 
+	in yout class do right click at blank space ,
+	then click on source -> now click on generate getters and setters ->
+	select all -> Generate. 
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	

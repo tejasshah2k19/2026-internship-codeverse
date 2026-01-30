@@ -1,82 +1,108 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<html lang="en">
-
+<html>
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Signup</title>
+    <meta charset="UTF-8">
+    <title>User Registration</title>
 
-    <!-- Bootstrap 5 CDN -->
-    <link 
-        href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" 
-        rel="stylesheet" />
-
-    <style>
-        body {
-            background: #f8f9fa;
-        }
-        .signup-card {
-            max-width: 450px;
-            margin: 50px auto;
-            padding: 25px;
-        }
-    </style>
+    <!-- Bootstrap CSS -->
+    <link
+        href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+        rel="stylesheet">
 </head>
+<body class="bg-light">
 
-<body>
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-lg-6 col-md-8 col-sm-12">
 
-    <div class="container">
-        <div class="card shadow signup-card">
-
-            <h3 class="text-center mb-4">Create Account</h3>
-
-            <form action="register" method="post" >
-
-                <div class="mb-3">
-                    <label class="form-label">First Name</label>
-                    <input type="text" name="firstName" class="form-control" required />
+            <div class="card shadow">
+                <div class="card-header bg-primary text-white text-center">
+                    <h4>User Registration</h4>
                 </div>
 
-                <div class="mb-3">
-                    <label class="form-label">Last Name</label>
-                    <input type="text" name="lastName" class="form-control" required />
+                <div class="card-body">
+                    <form action="register" method="post">
+
+                        <!-- First Name -->
+                        <div class="mb-3">
+                            <label class="form-label">First Name</label>
+                            <input type="text" name="firstName" class="form-control" required>
+                        </div>
+
+                        <!-- Last Name -->
+                        <div class="mb-3">
+                            <label class="form-label">Last Name</label>
+                            <input type="text" name="lastName" class="form-control" required>
+                        </div>
+
+                        <!-- Email -->
+                        <div class="mb-3">
+                            <label class="form-label">Email</label>
+                            <input type="email" name="email" class="form-control" required>
+                        </div>
+
+                        <!-- Password -->
+                        <div class="mb-3">
+                            <label class="form-label">Password</label>
+                            <input type="password" name="password" class="form-control" required>
+                        </div>
+
+                        <!-- Gender -->
+                        <div class="mb-3">
+                            <label class="form-label d-block">Gender</label>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="gender" value="MALE" required>
+                                <label class="form-check-label">Male</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="gender" value="FEMALE">
+                                <label class="form-check-label">Female</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="gender" value="OTHER">
+                                <label class="form-check-label">Other</label>
+                            </div>
+                        </div>
+
+                        <!-- Birth Year -->
+                        <div class="mb-3">
+                            <label class="form-label">Birth Year</label>
+                            <input type="number" name="birthYear" class="form-control"
+                                   min="1900" max="2100" required>
+                        </div>
+
+                        <!-- Contact Number -->
+                        <div class="mb-3">
+                            <label class="form-label">Contact Number</label>
+                            <input type="text" name="contactNum" class="form-control" required>
+                        </div>
+
+                        <!-- Profile Pic URL -->
+                        <div class="mb-3">
+                            <label class="form-label">Profile Picture URL</label>
+                            <input type="file" name="profilePicURL" class="form-control">
+                        </div>
+
+
+                        <!-- Submit -->
+                        <div class="d-grid">
+                            <button type="submit" class="btn btn-success">
+                                Save User
+                            </button>
+                        </div>
+
+                    </form>
                 </div>
-
-                <div class="mb-3">
-                    <label class="form-label">Email</label>
-                    <input type="email" name="email" class="form-control" required />
-                </div>
-
-                <div class="mb-3">
-                    <label class="form-label">Mobile Number</label>
-                    <input type="text" name="mobile" class="form-control" maxlength="10" required />
-                </div>
-
-                <div class="mb-3">
-                    <label class="form-label">Password</label>
-                    <input type="password" name="password" class="form-control" required />
-                </div>
-
-                <button type="submit" class="btn btn-primary w-100">
-                    Sign Up
-                </button>
-
-                <p class="text-center mt-3">
-                    Already have an account?
-                    <a href="login">Login</a>
-                </p>
-
-            </form>
+            </div>
 
         </div>
     </div>
+</div>
 
-    <!-- Bootstrap JS -->
-    <script 
-        src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js">
-    </script>
+<!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 
 </body>
 </html>
