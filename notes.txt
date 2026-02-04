@@ -23,6 +23,15 @@ How to create entity ?
 	use @Entity and @Table(name="users") at class level annotation 
 	add variable in your UserEntity like , userId, firstName etc. 
 	
+	every entity must have primary key
+		to mark field as a primary key and auto_increment we will use following annotations 
+		@Id
+		@GeneratedValue(strategy = GenerationType.IDENTITY)
+		Integer userId 
+		
+
+
+
 	
 How to generate getters and setters? 
 	in yout class do right click at blank space ,
@@ -44,8 +53,29 @@ Hibernate -> java -> database ->
 		object -> save -> record : insert 
 		  
 	
-	
-	
+How to create Repository ? 
+	we must have to create repostitory inside repository folder 
+		so 1) we will create repository folder if we dont have 
+		   2) right click on repository folder 
+		   		click -> new -> other ->
+		   		type interface -> interface click -> next
+		   			name input -> UserRepository -> finish
+		   			
+		   3) use @Repository annotation 
+		   4) extends JpaRepositor<T,ID>
+		   						T -> Table's entity 
+		   						Id -> primary key's data type 
+		   						 			 
+		   	  
+		
+4 , 5 , 6 
+all Entity 
+Repository 
+Controller 	
+
+
+1) CategoryEntity
+2) CategoryRepository  
 	
 	
 	

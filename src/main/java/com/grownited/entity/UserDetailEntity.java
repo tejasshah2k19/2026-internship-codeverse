@@ -13,7 +13,7 @@ public class UserDetailEntity {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer userDetailId;
-	private Integer userId;//
+	private Integer userId;//fk
 	private String qualification;
 	private String city;
 	private String state;
