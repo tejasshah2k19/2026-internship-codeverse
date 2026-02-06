@@ -77,8 +77,45 @@ Controller
 1) CategoryEntity
 2) CategoryRepository  
 	
-	
-	
+---------------------------------------------------------
+
+@Entity 
+@Table 
+@Id
+@Column
+@GeneratedValue
+@Controller 
+@Getmapping 
+@Postmapping 
+
+---------------------------------------------------------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 	
 	
 	
