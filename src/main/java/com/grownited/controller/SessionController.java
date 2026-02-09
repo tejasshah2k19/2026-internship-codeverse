@@ -1,15 +1,20 @@
 package com.grownited.controller;
 
 import java.time.LocalDate;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import com.grownited.entity.UserDetailEntity;
 import com.grownited.entity.UserEntity;
+import com.grownited.entity.UserTypeEntity;
+import com.grownited.repository.UserDetailRepository;
 import com.grownited.repository.UserRepository;
+import com.grownited.repository.UserTypeRepository;
 
 @Controller
 public class SessionController {
@@ -17,8 +22,18 @@ public class SessionController {
 	@Autowired
 	UserRepository userRepository; 
 
+	@Autowired
+	UserTypeRepository userTypeRepository; 
+	
+	@Autowired
+	UserDetailRepository userDetailRepository;
+	
 	@GetMapping("/signup")
-	public String openSignupPage() {
+	public String openSignupPage(Model model) {
+		
+		List<UserTypeEntity> allUserType = userTypeRepository.findAll(); 
+		//userType -> send Signup->
+		model.addAttribute("allUserType",allUserType); 
 		return "Signup"; // jsp name
 	}
 
@@ -47,7 +62,9 @@ public class SessionController {
 		
 		// users insert -> UserRepository
 		// new -> X
-		userRepository.save(userEntity);
+		userRepository.save(userEntity); //users insert  -> userId 
+		userDetailEntity.setUserId(userEntity.getUserId());
+		userDetailRepository.save(userDetailEntity);//
 		
 		 
 		return "Login";

@@ -91,6 +91,12 @@ Controller
 ---------------------------------------------------------
 
 
+table : entity 
+db query : repository 
+
+
+insert() : save() 
+select() : findAll()
 
 
 
