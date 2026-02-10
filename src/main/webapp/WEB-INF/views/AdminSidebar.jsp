@@ -17,6 +17,11 @@
     <a href="listUser">
         <i class="bi bi-people me-2"></i> Users
     </a>
+    <a href="newHackathon">
+        <i class="bi bi-people me-2"></i> New Hackathon    </a>
+    
+    
+    
     <a href="#">
         <i class="bi bi-gear me-2"></i> Settings
     </a>

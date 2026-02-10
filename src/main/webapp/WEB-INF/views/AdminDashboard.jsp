@@ -8,6 +8,9 @@
 
 
 <jsp:include page="AdminCSS.jsp"></jsp:include>
+<style>
+
+</style>
 </head>
 <body>
 
