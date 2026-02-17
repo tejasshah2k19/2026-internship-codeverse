@@ -30,7 +30,7 @@
 
 
 	<!-- Sidebar -->
-	<jsp:include page="AdminSidebar.jsp"></jsp:include>
+	<jsp:include page="AdminLeftSidebar.jsp"></jsp:include>
 
 
 

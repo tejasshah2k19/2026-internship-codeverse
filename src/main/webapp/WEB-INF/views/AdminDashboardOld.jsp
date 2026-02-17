@@ -19,8 +19,8 @@
 
 
 	<!-- Sidebar -->
-	<jsp:include page="AdminSidebar.jsp"></jsp:include>
-
+<%-- 	<jsp:include page="AdminSidebar.jsp"></jsp:include>
+ --%>
 	<!-- Main Content -->
 	<div class="content">
 		<h3>Dashboard</h3>
