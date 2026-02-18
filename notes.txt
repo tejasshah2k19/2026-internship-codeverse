@@ -124,7 +124,58 @@ session mamangement :-
 https://us02web.zoom.us/rec/share/0NMxoSvrCorTl3QSNucOk1DTZwdxFTLMEjoPs3xuo4WPfkqueP79DLHYkaynmvOf.ZJEng5YZWEeziFkH 
 Passcode: cr!eFTE4
 
+
 ----------------------------------------------------------------------
+
+Login -> password authenticate -> session =>  role redirect -> 
+
+
+How to send email - welcome mail - user - signup 
+
+mail api -> 
+	gmail 
+	
+	
+step 1: mail jar / api 
+
+
+step 2: mail configuration
+			application.properties 
+		
+step 3: send mail code -- MailerService 
+								1) welcome mail
+								2) otp send - forget password 
+								3) change password 
+
+step 4: controller -> service -> call
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

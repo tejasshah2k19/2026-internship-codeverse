@@ -16,6 +16,7 @@ import com.grownited.entity.UserTypeEntity;
 import com.grownited.repository.UserDetailRepository;
 import com.grownited.repository.UserRepository;
 import com.grownited.repository.UserTypeRepository;
+import com.grownited.service.MailerService;
 
 import jakarta.servlet.http.HttpSession;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -33,6 +34,9 @@ public class SessionController {
 	@Autowired
 	UserDetailRepository userDetailRepository;
 
+	@Autowired
+	MailerService mailerService;
+	
 	@GetMapping("/signup")
 	public String openSignupPage(Model model) {
 
@@ -91,7 +95,9 @@ public class SessionController {
 		userRepository.save(userEntity); // users insert -> userId
 		userDetailEntity.setUserId(userEntity.getUserId());
 		userDetailRepository.save(userDetailEntity);//
-
+		
+		//welcome mail send 
+		mailerService.sendWelcomeMail(userEntity);
 		return "Login";
 	}
 
