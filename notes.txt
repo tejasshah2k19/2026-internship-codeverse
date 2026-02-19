@@ -120,9 +120,8 @@ jsp -> ${sessionScope.user.firstName}
 <img src="${sessionScope.user.profilePicURL}" /> 
 	
 ----------------------------------------------------------------------
-session mamangement :- 
-https://us02web.zoom.us/rec/share/0NMxoSvrCorTl3QSNucOk1DTZwdxFTLMEjoPs3xuo4WPfkqueP79DLHYkaynmvOf.ZJEng5YZWEeziFkH 
-Passcode: cr!eFTE4
+session management video :- 
+https://youtu.be/diJ7W6hUNZ4
 
 
 ----------------------------------------------------------------------
@@ -150,6 +149,10 @@ step 3: send mail code -- MailerService
 step 4: controller -> service -> call
 
 
+----------------------------------------------------------------
+mail send video
+https://youtu.be/mubtitknsPA
+----------------------------------------------------------------
 
 
 
