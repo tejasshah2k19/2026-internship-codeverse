@@ -153,8 +153,10 @@ step 4: controller -> service -> call
 mail send video
 https://youtu.be/mubtitknsPA
 ----------------------------------------------------------------
-
-
+mail with tempalte 
+https://us02web.zoom.us/rec/share/wM8H1Rs1V_mr16StlB3pgFZPTC5k8CMrqrysbx_hQnVsO28GWiALjpLKdE91AxIi.SibitCJ8PYSExG_F?startTime=1771402476000
+Passcode: 6d8+6hP$
+----------------------------------------------------------------
 
 
 
