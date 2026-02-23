@@ -158,11 +158,80 @@ https://us02web.zoom.us/rec/share/wM8H1Rs1V_mr16StlB3pgFZPTC5k8CMrqrysbx_hQnVsO2
 Passcode: 6d8+6hP$
 ----------------------------------------------------------------
 
+guj123456789
+
+b6h54u38e7rf6g5fre83i4j5hb6u 
+
+b6h54u38e7rf6g5fre83i4j5hb6u -> guj123456789
+
+Bcrypt -> 
+
+signup -> plain text -> submit-> register -> read -> Bcrypt -> plainTextPassword -> encode ->
+			user-> db insert -> 
+			 
+1)	pom.xml -> spring crypto 
+
+<!-- Source: https://mvnrepository.com/artifact/org.springframework.security/spring-security-crypto -->
+<dependency>
+    <groupId>org.springframework.security</groupId>
+    <artifactId>spring-security-crypto</artifactId>
+</dependency>		
 
 
+2)  create singleton -- PasswordEncoder bean
+			@Bean 
+			PasswordEncoder	getPasswordEncoder(){
+				return new BcryptPasswordEncoder();
+			}
 
 
+3)  @Autowired 
+	PasswordEncoder passwordEncoder; 
+	passwordEncoder.encode(plainTextPassword);
+	
+	
+------------------------------------------------------------------------
+file upload : profic upload 	
 
+cloudinary -> 
+
+step 1: 
+	cloud Name : dqwes5eev
+	api key : 781758332318518
+	secret key : hr2hMchu6JApgB9ECnaoCfUZ_0I
+
+
+step 2: 
+	pom.xml -> cloudinary
+	<dependency>
+			<groupId>com.cloudinary</groupId>
+			<artifactId>cloudinary-http44</artifactId>
+			<version>1.31.0</version> <!-- or use latest -->
+	</dependency>
+
+
+step 3: 
+	@Bean => cloudinary singleton 
+	@Bean
+    public Cloudinary cloudinary() {
+        Map<String, String> config = new HashMap<>();
+        config.put("cloud_name", "YOUR_CLOUD_NAME");
+        config.put("api_key", "YOUR_API_KEY");
+        config.put("api_secret", "YOUR_SECRET");
+        return new Cloudinary(config);
+    }
+   
+step 4: 
+		profile pic => input type:file name="profilePic" 
+		form -> method : post 
+		encType -> multipart/form-data 
+ 
+step 5:   
+		controller -> read 
+		MultiPartFile profilePic 
+		 
+
+-------------------------------------------------------------------------------
 
 
 

@@ -5,6 +5,8 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -20,7 +22,7 @@ import com.grownited.service.MailerService;
 
 import jakarta.servlet.http.HttpSession;
 import org.springframework.web.bind.annotation.RequestParam;
-
+import org.springframework.web.multipart.MultipartFile;
 
 @Controller
 public class SessionController {
@@ -36,7 +38,10 @@ public class SessionController {
 
 	@Autowired
 	MailerService mailerService;
-	
+
+	@Autowired
+	PasswordEncoder passwordEncoder;
+
 	@GetMapping("/signup")
 	public String openSignupPage(Model model) {
 
@@ -52,13 +57,16 @@ public class SessionController {
 	}
 
 	@PostMapping("/authenticate")
-	public String authenticate(String email, String password,Model model,HttpSession session) {
+	public String authenticate(String email, String password, Model model, HttpSession session) {
 		Optional<UserEntity> op = userRepository.findByEmail(email);
 
 		if (op.isPresent()) {
 			UserEntity dbUser = op.get();
 			session.setAttribute("user", dbUser);
-			if (dbUser.getPassword().equals(password)) {
+
+			if (passwordEncoder.matches(password, dbUser.getPassword())) {
+
+//			if (dbUser.getPassword().equals(password)) {
 				if (dbUser.getRole().equals("ADMIN")) {
 					return "redirect:/admin-dashboard";// url '
 				} else if (dbUser.getRole().equals("PARTICIPANT")) {
@@ -68,8 +76,8 @@ public class SessionController {
 				}
 			}
 		}
-		
-		model.addAttribute("error","Invalid Credentials");
+
+		model.addAttribute("error", "Invalid Credentials");
 		return "Login";
 	}
 
@@ -79,7 +87,8 @@ public class SessionController {
 	}
 
 	@PostMapping("/register")
-	public String register(UserEntity userEntity, UserDetailEntity userDetailEntity) {
+	public String register(UserEntity userEntity, UserDetailEntity userDetailEntity, MultipartFile profilePic) {
+
 		System.out.println(userEntity.getFirstName());
 		System.out.println(userEntity.getLastName());
 		System.out.println("Processor => " + Runtime.getRuntime().availableProcessors());
@@ -90,23 +99,29 @@ public class SessionController {
 		userEntity.setActive(true);
 		userEntity.setCreatedAt(LocalDate.now());
 
+		// encode password
+		String encodedPassword = passwordEncoder.encode(userEntity.getPassword());
+		System.out.println(encodedPassword);
+		userEntity.setPassword(encodedPassword);
+
+		// file uploading
+		System.out.println(profilePic.getOriginalFilename());
+
 		// users insert -> UserRepository
 		// new -> X
-		userRepository.save(userEntity); // users insert -> userId
+//		userRepository.save(userEntity); // users insert -> userId
 		userDetailEntity.setUserId(userEntity.getUserId());
-		userDetailRepository.save(userDetailEntity);//
-		
-		//welcome mail send 
-		mailerService.sendWelcomeMail(userEntity);
+		// userDetailRepository.save(userDetailEntity);//
+
+		// welcome mail send
+		// mailerService.sendWelcomeMail(userEntity);
 		return "Login";
 	}
 
 	@GetMapping("logout")
 	public String logout(HttpSession session) {
-		session.invalidate(); 
+		session.invalidate();
 		return "Login";
 	}
-	
-	
-	
+
 }
