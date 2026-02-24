@@ -1,17 +1,20 @@
 package com.grownited.controller;
 
+import java.io.IOException;
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.multipart.MultipartFile;
 
+import com.cloudinary.Cloudinary;
 import com.grownited.entity.UserDetailEntity;
 import com.grownited.entity.UserEntity;
 import com.grownited.entity.UserTypeEntity;
@@ -21,8 +24,6 @@ import com.grownited.repository.UserTypeRepository;
 import com.grownited.service.MailerService;
 
 import jakarta.servlet.http.HttpSession;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.multipart.MultipartFile;
 
 @Controller
 public class SessionController {
@@ -41,7 +42,11 @@ public class SessionController {
 
 	@Autowired
 	PasswordEncoder passwordEncoder;
-
+	
+	@Autowired
+	Cloudinary cloudinary;
+	
+ 
 	@GetMapping("/signup")
 	public String openSignupPage(Model model) {
 
@@ -106,10 +111,21 @@ public class SessionController {
 
 		// file uploading
 		System.out.println(profilePic.getOriginalFilename());
-
+		
+		try {
+			Map  map = 	cloudinary.uploader().upload(profilePic.getBytes(), null);
+			String profilePicURL = map.get("secure_url").toString();
+			System.out.println(profilePicURL);
+			userEntity.setProfilePicURL(profilePicURL);
+			
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
 		// users insert -> UserRepository
 		// new -> X
-//		userRepository.save(userEntity); // users insert -> userId
+		//userRepository.save(userEntity); // users insert -> userId
 		userDetailEntity.setUserId(userEntity.getUserId());
 		// userDetailRepository.save(userDetailEntity);//
 
