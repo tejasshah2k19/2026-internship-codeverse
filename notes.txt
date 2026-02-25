@@ -234,8 +234,20 @@ step 5:
 step 6: 
 -------------------------------------------------------------------------------
 
+recordings ==> 
+password - bcrypt  { 2 recordings }
+https://us02web.zoom.us/rec/share/wlcNLUOQt5GfSEsfRW9ros1_vXR16e2LILZBjdmNFQfFJ4JlHKaxv2PkmdaBHk4.gDvumnTFzmtw1KGx 
+Passcode: M?!J7556
 
+cloudinary file upload 
+https://us02web.zoom.us/rec/share/EC7Wgq6r_UJDDi0e1WRbZdoJzP5uIb-j4UNTcFtJ4ZRHJ4NKgef-6D0VkMBJm0A.vKEnOAsDZ8X028yu?startTime=1771919100000
+Passcode: LeMNR2x?
 
+participant dashboard 
+https://us02web.zoom.us/rec/share/IFomT9anFba0rp9-HswQHn_H_c8G0tYF5UgWyIcSqO6kVuvr7EUEWnptmIGk7cof.Ewn7C8zHWn2-ONe9 
+Passcode: qNmq.8LQ
+
+-------------------------------------------------------------------------------
 
 
 
