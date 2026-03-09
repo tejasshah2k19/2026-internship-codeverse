@@ -251,8 +251,25 @@ Passcode: qNmq.8LQ
 
 
 
+			<c:if test="${empty sessionScope.user}">
+
+				<a href="/login">Login</a>
+				<a href="#" class="btn-primary"> Register <svg width="13"
+						height="13" viewBox="0 0 24 24" fill="none" stroke="white"
+						stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+        <line x1="5" y1="12" x2="19" y2="12" />
+					<polyline points="12 5 19 12 12 19" />
+      </svg>
+				</a>
 
 
+			</c:if>
+			<c:if test="${not empty sessionScope.user}">
+				<a href="/logout">Logout</a>
+			</c:if>
+
+
+-------------------------------------------------------------------------------
 
 
 

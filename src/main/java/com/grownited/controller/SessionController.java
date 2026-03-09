@@ -42,11 +42,10 @@ public class SessionController {
 
 	@Autowired
 	PasswordEncoder passwordEncoder;
-	
+
 	@Autowired
 	Cloudinary cloudinary;
-	
- 
+
 	@GetMapping("/signup")
 	public String openSignupPage(Model model) {
 
@@ -75,7 +74,7 @@ public class SessionController {
 				if (dbUser.getRole().equals("ADMIN")) {
 					return "redirect:/admin-dashboard";// url '
 				} else if (dbUser.getRole().equals("PARTICIPANT")) {
-					return "redirect:/participant-dashboard";// url '
+					return "redirect:/participant/home";// url '
 				} else if (dbUser.getRole().equals("JUDGE")) {
 					return "redirect:/judge-dashboard";
 				}
@@ -111,26 +110,26 @@ public class SessionController {
 
 		// file uploading
 		System.out.println(profilePic.getOriginalFilename());
-		
+
 		try {
-			Map  map = 	cloudinary.uploader().upload(profilePic.getBytes(), null);
+			Map map = cloudinary.uploader().upload(profilePic.getBytes(), null);
 			String profilePicURL = map.get("secure_url").toString();
 			System.out.println(profilePicURL);
 			userEntity.setProfilePicURL(profilePicURL);
-			
+
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
+
 		// users insert -> UserRepository
 		// new -> X
-		//userRepository.save(userEntity); // users insert -> userId
+		userRepository.save(userEntity); // users insert -> userId
 		userDetailEntity.setUserId(userEntity.getUserId());
-		// userDetailRepository.save(userDetailEntity);//
+		userDetailRepository.save(userDetailEntity);//
 
 		// welcome mail send
-		// mailerService.sendWelcomeMail(userEntity);
+		//mailerService.sendWelcomeMail(userEntity);
 		return "Login";
 	}
 
