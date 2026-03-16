@@ -66,10 +66,9 @@ public class SessionController {
 
 		if (op.isPresent()) {
 			UserEntity dbUser = op.get();
-			session.setAttribute("user", dbUser);
 
 			if (passwordEncoder.matches(password, dbUser.getPassword())) {
-
+				session.setAttribute("user", dbUser);
 //			if (dbUser.getPassword().equals(password)) {
 				if (dbUser.getRole().equals("ADMIN")) {
 					return "redirect:/admin-dashboard";// url '
@@ -129,7 +128,7 @@ public class SessionController {
 		userDetailRepository.save(userDetailEntity);//
 
 		// welcome mail send
-		//mailerService.sendWelcomeMail(userEntity);
+		// mailerService.sendWelcomeMail(userEntity);
 		return "Login";
 	}
 
