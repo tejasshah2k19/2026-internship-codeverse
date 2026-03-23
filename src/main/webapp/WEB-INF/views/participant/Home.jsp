@@ -809,8 +809,8 @@ to {
 			</div> HackPortal
 		</a>
 		<nav class="nav-links">
-			<a href="#">Explore</a> <a href="#">Leaderboard</a> <a href="#">Login</a>
-			<a href="#" class="btn-primary"> Register <svg width="13"
+			<a href="/participant/home">Explore</a> <a href="/participant/my-hackathons">My Hackathons</a> <a href="/logout">Logout</a>
+			<a href="/participant/profile" class="btn-primary"> My Profile <svg width="13"
 					height="13" viewBox="0 0 24 24" fill="none" stroke="white"
 					stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
         <line x1="5" y1="12" x2="19" y2="12" />

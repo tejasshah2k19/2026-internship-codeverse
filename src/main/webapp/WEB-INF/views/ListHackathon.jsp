@@ -35,10 +35,59 @@
 	background: #dc3545;
 }
 
-  .btn-add { background: #28a745; }
-        .btn-edit { background: #ffc107; color: black; }
-        .btn-delete { background: #dc3545; }
-        .btn-view { background: #007bff; }
+.btn-add {
+	background: #28a745;
+}
+
+.btn-edit {
+	background: #ffc107;
+	color: black;
+}
+
+.btn-delete {
+	background: #dc3545;
+}
+
+.btn-view {
+	background: #007bff;
+}
+.btn-publish {
+	background: #20c997;
+}
+.btn-unpublish {
+	background: #6c757d;
+}
+
+.hackathon-table th, .hackathon-table td {
+	vertical-align: middle;
+}
+
+.hackathon-actions {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 6px;
+	min-width: 270px;
+}
+
+.hackathon-actions .btn {
+	padding: 0.375rem 0.6rem;
+	font-size: 12px;
+}
+
+@media ( max-width : 991.98px) {
+	.hide-md {
+		display: none;
+	}
+}
+
+@media ( max-width : 767.98px) {
+	.hide-sm {
+		display: none;
+	}
+	.hackathon-actions {
+		min-width: 220px;
+	}
+}
 </style>
 
 </head>
@@ -74,18 +123,28 @@
 										<p class="card-title">All Hackathon</p>
 										<a href="newHackathon" class="text-info">New</a>
 									</div>
+									<c:if test="${success == 'leaderboardPublished'}">
+										<div class="alert alert-success">Leaderboard published successfully.</div>
+									</c:if>
+									<c:if test="${success == 'leaderboardUnpublished'}">
+										<div class="alert alert-info">Leaderboard unpublished successfully.</div>
+									</c:if>
+									<c:if test="${error == 'leaderboardNeedsComplete'}">
+										<div class="alert alert-danger">Complete the hackathon first, then publish leaderboard.</div>
+									</c:if>
 									<div class="table-responsive">
-										<table class="table table-bordered table-hover">
+										<table class="table table-bordered table-hover hackathon-table">
 											<thead>
 												<tr>
 													<th>#</th>
 													<th>Title</th>
 													<th>Status</th>
-													<th>Event Type</th>
-													<th>Payment</th>
+													<th class="hide-md">Event Type</th>
+													<th class="hide-sm">Payment</th>
 													<th>Team Size</th>
-													<th>Location</th>
-													<th>Registration Period</th>
+													<th class="hide-md">Location</th>
+													<th class="hide-sm">Registration Period</th>
+													<th>Leaderboard</th>
 													<th>Actions</th>
 												</tr>
 											</thead>
@@ -94,7 +153,7 @@
 												<c:choose>
 													<c:when test="${empty allHackthon}">
 														<tr>
-															<td colspan="9">No hackathons found</td>
+															<td colspan="10">No hackathons found</td>
 														</tr>
 													</c:when>
 
@@ -107,24 +166,49 @@
 																<td><span class="badge ${h.status}">
 																		${h.status} </span></td>
 
-																<td>${h.eventType}</td>
+																<td class="hide-md">${h.eventType}</td>
 
-																<td><span class="badge ${h.payment}">
+																<td class="hide-sm"><span class="badge ${h.payment}">
 																		${h.payment} </span></td>
 
 																<td>${h.minTeamSize}-${h.maxTeamSize}</td>
 
-																<td>${h.location}</td>
+																<td class="hide-md">${h.location}</td>
 
-																<td>${h.registrationStartDate}to
+																<td class="hide-sm">${h.registrationStartDate} to
 																	${h.registrationEndDate}</td>
 
-																<td><a href="viewHackathon" class="btn btn-view">View</a>
-																	<a href="editHackathon" class="btn btn-edit">Edit</a> <a
-																	href="deleteHackathon?hackathonId=${h.hackathonId}"
-																	class="btn btn-delete"
-																	onclick="return confirm('Are you sure you want to delete this hackathon?')">
-																		Delete </a></td>
+																<td>
+																	<c:choose>
+																		<c:when test="${h.leaderboardPublished}">
+																			<span class="badge badge-success">Published</span>
+																		</c:when>
+																		<c:otherwise>
+																			<span class="badge badge-secondary">Draft</span>
+																		</c:otherwise>
+																	</c:choose>
+																</td>
+
+																<td>
+																	<div class="hackathon-actions">
+																		<a href="listHackathonDescription?hackathonId=${h.hackathonId}" class="btn btn-info">Description</a>
+																		<a href="listHackathonPrize?hackathonId=${h.hackathonId}" class="btn btn-primary">Prizes</a>
+																		<a href="manageHackathonJudge?hackathonId=${h.hackathonId}" class="btn btn-secondary">Judges</a>
+																		<c:if test="${h.status == 'COMPLETED' || h.status == 'COMPLETE'}">
+																			<c:choose>
+																				<c:when test="${h.leaderboardPublished}">
+																					<a href="toggleLeaderboardPublish?hackathonId=${h.hackathonId}" class="btn btn-unpublish">Unpublish Board</a>
+																				</c:when>
+																				<c:otherwise>
+																					<a href="toggleLeaderboardPublish?hackathonId=${h.hackathonId}" class="btn btn-publish">Publish Board</a>
+																				</c:otherwise>
+																			</c:choose>
+																		</c:if>
+																		<a href="viewHackathon?hackathonId=${h.hackathonId}" class="btn btn-view">View</a>
+																		<a href="editHackathon?hackathonId=${h.hackathonId}" class="btn btn-edit">Edit</a>
+																		<a href="deleteHackathon?hackathonId=${h.hackathonId}" class="btn btn-delete" onclick="return confirm('Are you sure you want to delete this hackathon?')">Delete</a>
+																	</div>
+																</td>
 															</tr>
 														</c:forEach>
 													</c:otherwise>

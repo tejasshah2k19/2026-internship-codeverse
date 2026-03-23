@@ -36,6 +36,7 @@ public class AuthFilter implements Filter {
 		publicUrl.add("/signup");
 		publicUrl.add("/forget-password");
 		publicUrl.add("/authenticate");
+		publicUrl.add("/register");
 
 		if (publicUrl.contains(uri) || uri.contains("assets")) {
 			// go ahead
