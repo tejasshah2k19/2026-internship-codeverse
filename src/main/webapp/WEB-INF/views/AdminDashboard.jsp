@@ -103,14 +103,13 @@
 							<div class="card">
 								<div class="card-body">
 									<div class="d-flex justify-content-between">
-										<p class="card-title">Sales Report</p>
-										<a href="#" class="text-info">View all</a>
+										<p class="card-title">Enrollment Report</p>
+										<a href="listAllUsers" class="text-info">View all</a>
 									</div>
-									<p class="font-weight-500">The total number of sessions
-										within the date range. It is the period time a user is
-										actively engaged with your website, page or app, etc</p>
+									<p class="font-weight-500">The total number of registration
+										in past months.  </p>
 									<div id="sales-chart-legend" class="chartjs-legend mt-4 mb-2"></div>
-									<canvas id="sales-chart"></canvas>
+									<canvas id="myChart"></canvas>
 								</div>
 							</div>
 						</div>
@@ -131,7 +130,49 @@
 	<!-- container-scroller -->
 	<!-- plugins:js -->
 
+	<script>
+	
+	
+	  const data = [
+          { year: 2010, count: 10 },
+          { year: 2011, count: 20 },
+          { year: 2012, count: 15 },
+          { year: 2013, count: 25 },
+          { year: 2014, count: 22 },
+          { year: 2015, count: 30 },
+          { year: 2016, count: 28 },
+      ];
+	  
+	  
+	 new Chart(
+	            document.getElementById('myChart'),
+	            {
+	                type: 'bar',
+	                options: {
+	                    animation: false,
+	                    plugins: {
+	                        legend: {
+	                            display: false
+	                        },
+	                        tooltip: {
+	                            enabled: false
+	                        }
+	                    }
+	                },
+	                data: {
+	                    labels:  ["${months[0]}","${months[1]}","${months[2]}","${months[3]}","${months[4]}"],
+	                    datasets: [
+	                        {
+	                            label: 'Acquisitions by year',
+	                            data: [${counts[0]},${counts[1]},${counts[2]},${counts[3]},${counts[4]}]
+	                        }
+	                    ]
+	                }
+	            }
+	        );
 
+	
+	</script>
 
 
 	<!-- End custom js for this page-->
