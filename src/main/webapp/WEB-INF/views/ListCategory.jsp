@@ -9,7 +9,7 @@
 <meta charset="utf-8">
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<title>Skydash Admin</title>
+<title>CodeVerse : List Category</title>
 <!-- plugins:css -->
 
 <jsp:include page="AdminCSS.jsp"></jsp:include>
@@ -122,7 +122,7 @@
 																</c:otherwise>
 															</c:choose></td>
 
-														<td><a href="editCategory?id=${cat.categoryId}"
+														<td><a href="editCategory?categoryId=${cat.categoryId}"
 															class="btn btn-sm btn-warning">Edit</a> <a
 															href="deleteCategory?id=${cat.categoryId}"
 															class="btn btn-sm btn-danger"
@@ -131,7 +131,7 @@
 													</tr>
 												</c:forEach>
 
-											</tbody>
+											</tbody>	
 										</table>
 									</div>
 
