@@ -27,6 +27,12 @@ public class HackathonEntity {
 	Integer userTypeId;// fk
 	LocalDate registrationStartDate;
 	LocalDate registrationEndDate;
+	LocalDate hackathonStartDate;
+	LocalDate hackathonEndDate;
+	LocalDate submissionDeadline;
+	String bannerImageUrl;
+	String contactEmail;
+	String rulesUrl;
 	Boolean leaderboardPublished;
 	
 	Integer userId; //fk 
@@ -97,6 +103,42 @@ public class HackathonEntity {
 	}
 	public void setRegistrationEndDate(LocalDate registrationEndDate) {
 		this.registrationEndDate = registrationEndDate;
+	}
+	public LocalDate getHackathonStartDate() {
+		return hackathonStartDate;
+	}
+	public void setHackathonStartDate(LocalDate hackathonStartDate) {
+		this.hackathonStartDate = hackathonStartDate;
+	}
+	public LocalDate getHackathonEndDate() {
+		return hackathonEndDate;
+	}
+	public void setHackathonEndDate(LocalDate hackathonEndDate) {
+		this.hackathonEndDate = hackathonEndDate;
+	}
+	public LocalDate getSubmissionDeadline() {
+		return submissionDeadline;
+	}
+	public void setSubmissionDeadline(LocalDate submissionDeadline) {
+		this.submissionDeadline = submissionDeadline;
+	}
+	public String getBannerImageUrl() {
+		return bannerImageUrl;
+	}
+	public void setBannerImageUrl(String bannerImageUrl) {
+		this.bannerImageUrl = bannerImageUrl;
+	}
+	public String getContactEmail() {
+		return contactEmail;
+	}
+	public void setContactEmail(String contactEmail) {
+		this.contactEmail = contactEmail;
+	}
+	public String getRulesUrl() {
+		return rulesUrl;
+	}
+	public void setRulesUrl(String rulesUrl) {
+		this.rulesUrl = rulesUrl;
 	}
 	public Boolean getLeaderboardPublished() {
 		return leaderboardPublished;

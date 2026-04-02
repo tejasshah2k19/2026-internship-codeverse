@@ -28,14 +28,17 @@ body{font-family:'Syne',sans-serif;background:var(--bg);color:var(--text)}
 .chip.leader{color:#67e8f9}
 .chip.member{color:#c4b5fd}
 .desc{color:#a6b6c8;font-size:14px;line-height:1.6;min-height:44px}
-.actions{display:flex;gap:8px;margin-top:auto}
-.btn{flex:1;text-align:center;text-decoration:none;padding:10px;border-radius:10px;font-weight:700;font-size:13px}
+.actions{display:flex;gap:8px;margin-top:auto;flex-wrap:wrap}
+.btn{flex:1 1 calc(50% - 8px);min-width:140px;text-align:center;text-decoration:none;padding:10px;border-radius:10px;font-weight:700;font-size:13px}
 .btn-primary{background:linear-gradient(135deg,var(--accent),#5b27bd);color:#fff}
 .btn-secondary{background:var(--surface2);color:#cbd5e1;border:1px solid var(--border)}
 .btn-submission{background:#0f766e;color:#fff}
 .btn-leaderboard{background:#1d4ed8;color:#fff}
 .btn-disabled{background:#334155;color:#94a3b8;cursor:not-allowed;pointer-events:none;opacity:.85}
 .empty{background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:30px;text-align:center;color:var(--muted)}
+@media (max-width: 520px){
+	.btn{flex:1 1 100%;min-width:0}
+}
 </style>
 </head>
 <body>
@@ -83,8 +86,8 @@ body{font-family:'Syne',sans-serif;background:var(--bg);color:var(--text)}
 										</c:otherwise>
 									</c:choose>
 								</c:if>
-								<c:if test="${m.hackathon.status == 'COMPLETE' || m.hackathon.status == 'COMPLETED'}">
-									<a class="btn btn-leaderboard" href="/participant/hackathon/${m.hackathon.hackathonId}/leaderboard">Leaderboard</a>
+								<c:if test="${m.hackathon.leaderboardPublished}">
+									<a class="btn btn-leaderboard" href="/participant/leaderboard/${m.hackathon.hackathonId}">Leaderboard</a>
 								</c:if>
 							</div>
 						</article>

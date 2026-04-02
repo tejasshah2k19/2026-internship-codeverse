@@ -183,7 +183,7 @@ body {
 		<c:if test="${error == 'invalidEmail'}"><div class="msg error">Please enter a valid external email.</div></c:if>
 		<c:if test="${error == 'inviteExists'}"><div class="msg error">Pending invite already exists for this email.</div></c:if>
 		<c:if test="${error == 'inviteNotFound' || error == 'inviteInvalid'}"><div class="msg error">Invitation is invalid or no longer available.</div></c:if>
-		<c:if test="${error == 'submissionLocked'}"><div class="msg error">Submission is locked until registration period ends.</div></c:if>
+		<c:if test="${error == 'submissionClosed'}"><div class="msg error">Submission deadline has passed for this hackathon.</div></c:if>
 		<c:if test="${error == 'inviteClosed'}"><div class="msg error">Invitations are closed after registration end date.</div></c:if>
 		<c:if test="${error == 'notLeader'}"><div class="msg error">Only team leader can remove participants.</div></c:if>
 		<c:if test="${error == 'cannotRemoveLeader'}"><div class="msg error">Team leader cannot be removed from team.</div></c:if>

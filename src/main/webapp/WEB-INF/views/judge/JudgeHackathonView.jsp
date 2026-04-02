@@ -16,6 +16,7 @@
 body{font-family:'Space Grotesk',sans-serif;background:var(--bg);color:var(--text)}
 .wrap{max-width:1050px;margin:0 auto;padding:24px 16px 34px}
 .hero{background:linear-gradient(130deg,var(--primary) 0%,var(--primary2) 100%);border-radius:16px;padding:18px;color:#fff}
+.hero-banner{margin-top:12px;width:100%;max-height:240px;object-fit:cover;border-radius:10px;border:1px solid rgba(255,255,255,.35)}
 .hero h1{font-family:'Sora',sans-serif;font-size:30px;line-height:1.1}
 .hero p{margin-top:8px;opacity:.92}
 .back{display:inline-block;margin-top:12px;color:#fff;text-decoration:none;font-weight:700;border:1px solid rgba(255,255,255,.5);padding:8px 10px;border-radius:9px}
@@ -49,6 +50,9 @@ th{font-size:12px;color:#647c95;text-transform:uppercase;letter-spacing:.45px}
 			<h1>${hackathon.title}</h1>
 			<p>Judge view for assigned hackathon details.</p>
 			<a class="back" href="/judge-dashboard">&larr; Back to Dashboard</a>
+			<c:if test="${not empty hackathon.bannerImageUrl}">
+				<img src="${hackathon.bannerImageUrl}" alt="${hackathon.title}" class="hero-banner">
+			</c:if>
 		</div>
 
 		<div class="panel">
@@ -60,6 +64,17 @@ th{font-size:12px;color:#647c95;text-transform:uppercase;letter-spacing:.45px}
 				<div class="meta-box"><div class="meta-label">Team Size</div><div class="meta-val">${hackathon.minTeamSize} - ${hackathon.maxTeamSize}</div></div>
 				<div class="meta-box"><div class="meta-label">Location</div><div class="meta-val">${hackathon.location}</div></div>
 				<div class="meta-box"><div class="meta-label">Registration</div><div class="meta-val">${hackathon.registrationStartDate} to ${hackathon.registrationEndDate}</div></div>
+				<div class="meta-box"><div class="meta-label">Hackathon Dates</div><div class="meta-val">${hackathon.hackathonStartDate} to ${hackathon.hackathonEndDate}</div></div>
+				<div class="meta-box"><div class="meta-label">Submission Deadline</div><div class="meta-val">${hackathon.submissionDeadline}</div></div>
+				<div class="meta-box"><div class="meta-label">Contact</div><div class="meta-val">${hackathon.contactEmail}</div></div>
+				<div class="meta-box"><div class="meta-label">Rules</div><div class="meta-val">
+					<c:choose>
+						<c:when test="${not empty hackathon.rulesUrl}">
+							<a href="${hackathon.rulesUrl}" target="_blank">Open Rules</a>
+						</c:when>
+						<c:otherwise>Not Provided</c:otherwise>
+					</c:choose>
+				</div></div>
 			</div>
 		</div>
 

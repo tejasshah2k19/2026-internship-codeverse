@@ -84,6 +84,12 @@
 								<tr><td class="label">User Type ID</td><td>${hackathon.userTypeId}</td></tr>
 								<tr><td class="label">Registration Start</td><td>${hackathon.registrationStartDate}</td></tr>
 								<tr><td class="label">Registration End</td><td>${hackathon.registrationEndDate}</td></tr>
+								<tr><td class="label">Hackathon Start</td><td>${hackathon.hackathonStartDate}</td></tr>
+								<tr><td class="label">Hackathon End</td><td>${hackathon.hackathonEndDate}</td></tr>
+								<tr><td class="label">Submission Deadline</td><td>${hackathon.submissionDeadline}</td></tr>
+								<tr><td class="label">Banner Image URL</td><td>${hackathon.bannerImageUrl}</td></tr>
+								<tr><td class="label">Contact Email</td><td>${hackathon.contactEmail}</td></tr>
+								<tr><td class="label">Rules URL</td><td>${hackathon.rulesUrl}</td></tr>
 								<tr><td class="label">Leaderboard</td><td>${hackathon.leaderboardPublished ? 'Published' : 'Draft'}</td></tr>
 							</table>
 							<hr />

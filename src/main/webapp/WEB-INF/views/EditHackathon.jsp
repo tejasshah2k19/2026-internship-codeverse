@@ -108,6 +108,37 @@
 												<input class="form-control" type="date" name="registrationEndDate" value="${hackathon.registrationEndDate}" required />
 											</div>
 										</div>
+
+										<div class="row">
+											<div class="col-md-6 form-group">
+												<label>Hackathon Start Date</label>
+												<input class="form-control" type="date" name="hackathonStartDate" value="${hackathon.hackathonStartDate}" required />
+											</div>
+											<div class="col-md-6 form-group">
+												<label>Hackathon End Date</label>
+												<input class="form-control" type="date" name="hackathonEndDate" value="${hackathon.hackathonEndDate}" required />
+											</div>
+										</div>
+
+										<div class="form-group">
+											<label>Submission Deadline</label>
+											<input class="form-control" type="date" name="submissionDeadline" value="${hackathon.submissionDeadline}" required />
+										</div>
+
+										<div class="form-group">
+											<label>Banner Image URL</label>
+											<input type="url" class="form-control" name="bannerImageUrl" value="${hackathon.bannerImageUrl}" />
+										</div>
+
+										<div class="form-group">
+											<label>Contact Email</label>
+											<input type="email" class="form-control" name="contactEmail" value="${hackathon.contactEmail}" />
+										</div>
+
+										<div class="form-group">
+											<label>Rules URL</label>
+											<input type="url" class="form-control" name="rulesUrl" value="${hackathon.rulesUrl}" />
+										</div>
 										
 										<hr />
 										<h5>Prize Details</h5>

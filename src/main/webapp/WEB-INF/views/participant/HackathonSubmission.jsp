@@ -35,7 +35,8 @@ body{font-family:'Syne',sans-serif;background:var(--bg);color:var(--text)}
 		</div>
 
 		<c:if test="${success == 'saved'}"><div class="msg ok">Submission saved successfully.</div></c:if>
-		<c:if test="${not empty error}"><div class="msg err">${error}</div></c:if>
+		<c:if test="${error == 'submissionClosed'}"><div class="msg err">Submission deadline has passed for this hackathon.</div></c:if>
+		<c:if test="${not empty error and error != 'submissionClosed'}"><div class="msg err">${error}</div></c:if>
 
 		<div class="card">
 			<form action="/participant/hackathon/${hackathon.hackathonId}/submission/save" method="post">

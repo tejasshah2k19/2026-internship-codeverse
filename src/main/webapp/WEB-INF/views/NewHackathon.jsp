@@ -142,6 +142,41 @@
 													required />
 											</div>
 										</div>
+
+										<div class="row">
+											<div class="form-group">
+												<label>Hackathon Start Date</label>
+												<input class="form-control" type="date" name="hackathonStartDate" required />
+											</div>
+
+											<div class="form-group">
+												<label>Hackathon End Date</label>
+												<input class="form-control" type="date" name="hackathonEndDate" required />
+											</div>
+										</div>
+
+										<div class="form-group">
+											<label>Submission Deadline</label>
+											<input class="form-control" type="date" name="submissionDeadline" required />
+										</div>
+
+										<div class="form-group">
+											<label>Banner Image URL</label>
+											<input type="url" class="form-control" name="bannerImageUrl"
+												placeholder="https://example.com/banner.jpg" />
+										</div>
+
+										<div class="form-group">
+											<label>Contact Email</label>
+											<input type="email" class="form-control" name="contactEmail"
+												placeholder="organizer@example.com" />
+										</div>
+
+										<div class="form-group">
+											<label>Rules URL</label>
+											<input type="url" class="form-control" name="rulesUrl"
+												placeholder="https://example.com/rules" />
+										</div>
 										
 										<hr />
 										<h5>Prize Details</h5>

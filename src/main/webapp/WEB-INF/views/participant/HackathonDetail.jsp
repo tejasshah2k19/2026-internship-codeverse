@@ -50,6 +50,14 @@ body {
 	border-radius: 18px;
 	padding: 24px;
 }
+.hero-banner {
+	width: 100%;
+	max-height: 280px;
+	object-fit: cover;
+	border-radius: 14px;
+	border: 1px solid var(--border);
+	margin-bottom: 16px;
+}
 .hero h1 {
 	font-size: clamp(26px, 5vw, 42px);
 	line-height: 1.1;
@@ -221,6 +229,9 @@ body {
 		</div>
 
 		<section class="hero">
+			<c:if test="${not empty hackathon.bannerImageUrl}">
+				<img src="${hackathon.bannerImageUrl}" alt="${hackathon.title}" class="hero-banner">
+			</c:if>
 			<h1>${hackathon.title}</h1>
 			<p>${hackathon.description}</p>
 			<div class="meta">
@@ -259,7 +270,7 @@ body {
 				<div class="msg error">You are already part of another team in this hackathon.</div>
 			</c:if>
 			<c:if test="${error == 'leaderboardNotReady'}">
-				<div class="msg error">Leaderboard will be available only after hackathon is marked complete.</div>
+				<div class="msg error">Leaderboard is not published yet.</div>
 			</c:if>
 
 			<div class="join-panel">
@@ -306,7 +317,7 @@ body {
 
 			<c:if test="${leaderboardAvailable}">
 				<div style="margin-top:12px;">
-					<a class="ghost-btn" href="/participant/hackathon/${hackathon.hackathonId}/leaderboard">View Leaderboard</a>
+					<a class="ghost-btn" href="/participant/leaderboard/${hackathon.hackathonId}">View Leaderboard</a>
 				</div>
 			</c:if>
 		</section>
@@ -340,6 +351,29 @@ body {
 					<div class="kitem">
 						<span class="label">Location</span>
 						<span class="value">${hackathon.location}</span>
+					</div>
+					<div class="kitem">
+						<span class="label">Hackathon Dates</span>
+						<span class="value">${hackathon.hackathonStartDate} to ${hackathon.hackathonEndDate}</span>
+					</div>
+					<div class="kitem">
+						<span class="label">Submission Deadline</span>
+						<span class="value">${hackathon.submissionDeadline}</span>
+					</div>
+					<div class="kitem">
+						<span class="label">Contact Email</span>
+						<span class="value">${hackathon.contactEmail}</span>
+					</div>
+					<div class="kitem">
+						<span class="label">Rules</span>
+						<span class="value">
+							<c:choose>
+								<c:when test="${not empty hackathon.rulesUrl}">
+									<a href="${hackathon.rulesUrl}" target="_blank" style="color:#93c5fd;">Open Rules</a>
+								</c:when>
+								<c:otherwise>Not Provided</c:otherwise>
+							</c:choose>
+						</span>
 					</div>
 				</div>
 			</section>
